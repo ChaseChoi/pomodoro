@@ -54,14 +54,70 @@
 		160AC49120DB7D69009FD49D /* pomodoro */ = {
 			isa = PBXGroup;
 			children = (
-				160AC49220DB7D69009FD49D /* AppDelegate.swift */,
-				160AC49420DB7D69009FD49D /* ViewController.swift */,
-				160AC49620DB7D69009FD49D /* Main.storyboard */,
-				160AC49920DB7D6C009FD49D /* Assets.xcassets */,
-				160AC49B20DB7D6C009FD49D /* LaunchScreen.storyboard */,
-				160AC49E20DB7D6C009FD49D /* Info.plist */,
+				160AC4AA20DB7E54009FD49D /* Resources */,
+				160AC4A920DB7E37009FD49D /* Application Delegate */,
+				160AC4A820DB7E11009FD49D /* View Controllers */,
+				160AC4A720DB7DEF009FD49D /* Storyboards */,
+				160AC4A620DB7DE2009FD49D /* Supporting Files */,
+				160AC4A520DB7DD4009FD49D /* Manager */,
+				160AC4A420DB7DC7009FD49D /* CoreData */,
 			);
 			path = pomodoro;
+			sourceTree = "<group>";
+		};
+		160AC4A420DB7DC7009FD49D /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		160AC4A520DB7DD4009FD49D /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		160AC4A620DB7DE2009FD49D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				160AC49E20DB7D6C009FD49D /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		160AC4A720DB7DEF009FD49D /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				160AC49B20DB7D6C009FD49D /* LaunchScreen.storyboard */,
+				160AC49620DB7D69009FD49D /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		160AC4A820DB7E11009FD49D /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				160AC49420DB7D69009FD49D /* ViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		160AC4A920DB7E37009FD49D /* Application Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				160AC49220DB7D69009FD49D /* AppDelegate.swift */,
+			);
+			path = "Application Delegate";
+			sourceTree = "<group>";
+		};
+		160AC4AA20DB7E54009FD49D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				160AC49920DB7D6C009FD49D /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,7 +338,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E9875RFG2Y;
-				INFOPLIST_FILE = pomodoro/Info.plist;
+				INFOPLIST_FILE = "pomodoro/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -300,7 +357,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E9875RFG2Y;
-				INFOPLIST_FILE = pomodoro/Info.plist;
+				INFOPLIST_FILE = "pomodoro/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
