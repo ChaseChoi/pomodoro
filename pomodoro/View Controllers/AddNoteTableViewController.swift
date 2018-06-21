@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import CoreData
 
 class AddNoteTableViewController: UITableViewController {
     // MARK: - Properties
 
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var doneButton: UIBarButtonItem!
+    
+    var managedObjectContext: NSManagedObjectContext?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -29,6 +32,18 @@ class AddNoteTableViewController: UITableViewController {
     }
     
     @IBAction func done() {
+        guard let managedObjectContext = managedObjectContext else {
+            return
+        }
+        // Create Note
+        let note = Note(context: managedObjectContext)
+        
+        // Configure Note
+        note.contents = textField.text!
+        note.createdAt = Date()
+        note.hoursCost = 0.0
+        
+        // Pop View Controller
         dismiss(animated: true, completion: nil)
     }
     
