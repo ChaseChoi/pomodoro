@@ -14,6 +14,7 @@
 		160AC49D20DB7D6C009FD49D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 160AC49B20DB7D6C009FD49D /* LaunchScreen.storyboard */; };
 		160AC4AC20DB860A009FD49D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160AC4AB20DB860A009FD49D /* CoreDataManager.swift */; };
 		160AC4AF20DB8F0C009FD49D /* Notes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 160AC4AD20DB8F0C009FD49D /* Notes.xcdatamodeld */; };
+		160AC4B420DB9807009FD49D /* AddNoteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160AC4B320DB9807009FD49D /* AddNoteTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		160AC49E20DB7D6C009FD49D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		160AC4AB20DB860A009FD49D /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		160AC4AE20DB8F0C009FD49D /* Notes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Notes.xcdatamodel; sourceTree = "<group>"; };
+		160AC4B320DB9807009FD49D /* AddNoteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +107,8 @@
 		160AC4A820DB7E11009FD49D /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				160AC49420DB7D69009FD49D /* ViewController.swift */,
+				160AC4B320DB9807009FD49D /* AddNoteTableViewController.swift */,
+				160AC4B020DB9375009FD49D /* Root View Controller */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -124,6 +127,14 @@
 				160AC49920DB7D6C009FD49D /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		160AC4B020DB9375009FD49D /* Root View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				160AC49420DB7D69009FD49D /* ViewController.swift */,
+			);
+			path = "Root View Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				160AC4AC20DB860A009FD49D /* CoreDataManager.swift in Sources */,
+				160AC4B420DB9807009FD49D /* AddNoteTableViewController.swift in Sources */,
 				160AC49520DB7D69009FD49D /* ViewController.swift in Sources */,
 				160AC49320DB7D69009FD49D /* AppDelegate.swift in Sources */,
 				160AC4AF20DB8F0C009FD49D /* Notes.xcdatamodeld in Sources */,
