@@ -12,6 +12,8 @@
 		160AC49820DB7D69009FD49D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 160AC49620DB7D69009FD49D /* Main.storyboard */; };
 		160AC49A20DB7D6C009FD49D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 160AC49920DB7D6C009FD49D /* Assets.xcassets */; };
 		160AC49D20DB7D6C009FD49D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 160AC49B20DB7D6C009FD49D /* LaunchScreen.storyboard */; };
+		160AC4AC20DB860A009FD49D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160AC4AB20DB860A009FD49D /* CoreDataManager.swift */; };
+		160AC4AF20DB8F0C009FD49D /* Notes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 160AC4AD20DB8F0C009FD49D /* Notes.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		160AC49920DB7D6C009FD49D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		160AC49C20DB7D6C009FD49D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		160AC49E20DB7D6C009FD49D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		160AC4AB20DB860A009FD49D /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		160AC4AE20DB8F0C009FD49D /* Notes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Notes.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,7 @@
 		160AC4A420DB7DC7009FD49D /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				160AC4AD20DB8F0C009FD49D /* Notes.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -75,6 +80,7 @@
 		160AC4A520DB7DD4009FD49D /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				160AC4AB20DB860A009FD49D /* CoreDataManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -191,8 +197,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				160AC4AC20DB860A009FD49D /* CoreDataManager.swift in Sources */,
 				160AC49520DB7D69009FD49D /* ViewController.swift in Sources */,
 				160AC49320DB7D69009FD49D /* AppDelegate.swift in Sources */,
+				160AC4AF20DB8F0C009FD49D /* Notes.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +400,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		160AC4AD20DB8F0C009FD49D /* Notes.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				160AC4AE20DB8F0C009FD49D /* Notes.xcdatamodel */,
+			);
+			currentVersion = 160AC4AE20DB8F0C009FD49D /* Notes.xcdatamodel */;
+			path = Notes.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 160AC48720DB7D69009FD49D /* Project object */;
 }
