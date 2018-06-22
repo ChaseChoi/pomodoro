@@ -62,38 +62,40 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="DyJ-EZ-m52"/>
                                 </connections>
                             </tableView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sXp-Mz-sfJ">
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zhJ-7t-Z9v">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bGN-Ly-KDh">
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ZsY-Gb-v3n">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NbT-Jb-aen">
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1xQ-2B-hPl">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="1Rw-Gg-ckS">
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="HDz-Z2-fhT">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </view>
-                                            <blurEffect style="dark"/>
+                                            <vibrancyEffect>
+                                                <blurEffect style="light"/>
+                                            </vibrancyEffect>
                                         </visualEffectView>
                                     </subviews>
                                 </view>
-                                <blurEffect style="extraLight"/>
+                                <blurEffect style="dark"/>
                             </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="2GQ-bV-Ds2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="08g-Hn-1W8"/>
+                            <constraint firstItem="zhJ-7t-Z9v" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0Jx-Ky-ZUa"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hUv-EX-Hps" secondAttribute="bottom" id="6dC-Ag-hGp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zhJ-7t-Z9v" secondAttribute="bottom" id="CqH-RG-bch"/>
                             <constraint firstItem="hUv-EX-Hps" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="HJK-Xl-V8a"/>
                             <constraint firstItem="hUv-EX-Hps" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="In6-7r-hn7"/>
                             <constraint firstItem="hUv-EX-Hps" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="L7z-Qs-7uV"/>
-                            <constraint firstItem="sXp-Mz-sfJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="M04-wH-tLD"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sXp-Mz-sfJ" secondAttribute="bottom" id="Mg1-yl-tT7"/>
-                            <constraint firstItem="sXp-Mz-sfJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="OmD-OU-ZWQ"/>
-                            <constraint firstItem="2GQ-bV-Ds2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="qJr-fw-FN3"/>
-                            <constraint firstItem="sXp-Mz-sfJ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="rHq-gM-N80"/>
-                            <constraint firstItem="2GQ-bV-Ds2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zbr-1c-FSV"/>
+                            <constraint firstItem="2GQ-bV-Ds2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="UJk-nm-aYZ"/>
+                            <constraint firstItem="zhJ-7t-Z9v" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="cEv-Wm-x5i"/>
+                            <constraint firstItem="zhJ-7t-Z9v" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mkR-ZG-rvT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -113,7 +115,7 @@
                         <outlet property="addRecordView" destination="hmW-37-LZl" id="sWG-vU-aFG"/>
                         <outlet property="messageLabel" destination="2GQ-bV-Ds2" id="Joe-mf-ThH"/>
                         <outlet property="tableView" destination="hUv-EX-Hps" id="R2J-Q1-7c2"/>
-                        <outlet property="visualEffectView" destination="NbT-Jb-aen" id="7D8-8p-gya"/>
+                        <outlet property="visualEffectView" destination="zhJ-7t-Z9v" id="Ip1-mr-gFA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
