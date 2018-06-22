@@ -13,6 +13,7 @@ class NoteViewController: UIViewController {
     // MARK: - Segue
     private enum Segue: String {
         case AddNote
+        case ShowRecords
     }
     
     // MARK: - Properties
@@ -28,7 +29,7 @@ class NoteViewController: UIViewController {
     var effect: UIVisualEffect!
     
     private var noteToAddRecord: Note?
-    private let estimatedRowHeight = CGFloat(44.0)
+    private let estimatedRowHeight = CGFloat(60.0)
     private let stepOfSlider: Float = 5.0
     
     private var hasNotes: Bool {
@@ -67,6 +68,14 @@ class NoteViewController: UIViewController {
                 return
             }
             addViewController.managedObjectContext = self.coreDataManager.managedObjectContext
+        case Segue.ShowRecords.rawValue:
+            guard let destination = segue.destination as? UINavigationController else {
+                return
+            }
+            guard let recordsViewController = destination.topViewController as? RecordsViewController else {
+                return
+            }
+            recordsViewController.managedObjectContext = self.coreDataManager.managedObjectContext
         default:
             break;
         }

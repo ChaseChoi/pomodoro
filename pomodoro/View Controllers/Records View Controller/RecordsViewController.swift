@@ -7,10 +7,15 @@
 //
 
 import UIKit
+import Charts
+import CoreData
 
 class RecordsViewController: UIViewController {
     // MARK: - Properties
     @IBOutlet weak var cancelBtn:  UIBarButtonItem!
+    @IBOutlet weak var pieChartView: PieChartView!
+    // MARK: Managed Object Context
+    var managedObjectContext: NSManagedObjectContext?
     
     // MARK: -
     override func viewDidLoad() {
@@ -23,4 +28,6 @@ class RecordsViewController: UIViewController {
     @IBAction func cancel() {
         dismiss(animated: true, completion: nil)
     }
+    
+    
 }

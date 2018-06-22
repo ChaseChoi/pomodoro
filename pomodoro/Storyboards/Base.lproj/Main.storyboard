@@ -107,7 +107,7 @@
                     <navigationItem key="navigationItem" title="Title" id="mCz-4p-UvI">
                         <barButtonItem key="leftBarButtonItem" title="统计" id="adK-Wa-lTB">
                             <connections>
-                                <segue destination="wgO-JZ-WZ7" kind="presentation" modalTransitionStyle="flipHorizontal" id="Fct-RF-oEQ"/>
+                                <segue destination="wgO-JZ-WZ7" kind="presentation" identifier="ShowRecords" modalTransitionStyle="flipHorizontal" id="Fct-RF-oEQ"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="hKS-v1-CZS">
@@ -175,6 +175,13 @@
                     <view key="view" contentMode="scaleToFill" id="ejk-9V-E2l">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BSh-KZ-hZ7" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="16" y="269" width="343" height="290"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Fu2-Jj-GBP"/>
                     </view>
@@ -187,6 +194,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cancelBtn" destination="9IF-to-eaa" id="wwR-WP-KLW"/>
+                        <outlet property="pieChartView" destination="BSh-KZ-hZ7" id="m25-lS-mCR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YYa-3R-oIm" userLabel="First Responder" sceneMemberID="firstResponder"/>
