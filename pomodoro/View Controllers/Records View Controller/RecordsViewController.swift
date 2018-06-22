@@ -9,10 +9,18 @@
 import UIKit
 
 class RecordsViewController: UIViewController {
-
+    // MARK: - Properties
+    @IBOutlet weak var cancelBtn:  UIBarButtonItem!
+    
+    // MARK: -
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        title = "我的统计"
     }
 
+    // MARK: -
+    @IBAction func cancel() {
+        dismiss(animated: true, completion: nil)
+    }
 }
