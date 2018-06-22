@@ -71,7 +71,6 @@ class RecordsViewController: UIViewController {
     func updateChartData() {
         let chartDataSet = PieChartDataSet(values: notesDataEntries, label: nil)
         let chartData = PieChartData(dataSet: chartDataSet)
-        var colors = [UIColor]()
         
         // Formatter
         let formatter = NumberFormatter()
@@ -80,16 +79,7 @@ class RecordsViewController: UIViewController {
         formatter.multiplier = 1.0
         chartDataSet.valueFormatter = formatter as? IValueFormatter
         
-        // Set Random Colors
-        for _ in 0..<notesDataEntries.count {
-            let red = Double(arc4random_uniform(256))
-            let green = Double(arc4random_uniform(256))
-            let blue = Double(arc4random_uniform(256))
-            
-            let color = UIColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1)
-            colors.append(color)
-        }
-        chartDataSet.colors = colors
+        chartDataSet.colors = ChartColorTemplates.material()
         // Update
         pieChartView.data = chartData
         pieChartView.animate(xAxisDuration: 1, yAxisDuration: 1, easingOption: .easeOutQuad)
