@@ -86,12 +86,17 @@ class TimerViewController: UIViewController {
     @objc func updateTimer() {
         if secondsRemaining < 1 {
             resetButton.sendActions(for: .touchUpInside)
-            
-            
+            showAlert()
         } else {
             secondsRemaining -= 1
             timeLabel.text = timeString(time: secondsRemaining)
         }
+    }
+    func showAlert() {
+        let alert = UIAlertController(title: "计时结束", message: "番茄钟计时已结束", preferredStyle: .alert)
+        let action = UIAlertAction(title: "好", style: .default, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
     
     // Initial state of buttons

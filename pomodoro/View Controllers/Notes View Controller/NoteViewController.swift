@@ -19,6 +19,9 @@ class NoteViewController: UIViewController {
     
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addRecordView: UIView!
+    @IBOutlet weak var visualEffectView: UIVisualEffectView!
+    var effect: UIVisualEffect!
     
     private let estimatedRowHeight = CGFloat(44.0)
     
@@ -42,6 +45,7 @@ class NoteViewController: UIViewController {
         setupView()
         fetchNotes()
         updateView()
+        configureAddRecordView()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -98,10 +102,46 @@ class NoteViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
     }
     
+    @IBAction func addRecord() {
+        animateIn()
+    }
+    
     /// Display messageLabel or tableView as per hasNotes
     private func updateView() {
         tableView.isHidden = !hasNotes
         messageLabel.isHidden = hasNotes
+    }
+    
+    // MARK: Pop Up View
+    func configureAddRecordView() {
+        effect = visualEffectView.effect
+        addRecordView.layer.cornerRadius = 8
+        visualEffectView.effect = nil
+    }
+    
+    func animateIn() {
+        self.view.addSubview(addRecordView)
+        addRecordView.center = self.view.center
+        
+        addRecordView.transform = CGAffineTransform.init(translationX: 0, y: -1000)
+        
+        UIView.animate(withDuration: 0.3) {
+            self.addRecordView.transform = CGAffineTransform.identity
+            self.visualEffectView.effect = self.effect
+        }
+    }
+    
+    func animateOut() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.addRecordView.transform = CGAffineTransform.init(translationX: 0, y: -1000)
+            self.visualEffectView.effect = nil
+        }) { (success: Bool) in
+            self.addRecordView.removeFromSuperview()
+        }
+    }
+    
+    @IBAction func dismissPopup() {
+        animateOut()
     }
     // MARK: - Helper Methods
     
