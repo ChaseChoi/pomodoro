@@ -21,6 +21,7 @@ class NoteViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addRecordView: UIView!
     @IBOutlet weak var addNoteBtn: UIBarButtonItem!
+    @IBOutlet weak var showRecordsBtn: UIBarButtonItem!
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var timeToRecordLabel: UILabel!
@@ -129,6 +130,7 @@ class NoteViewController: UIViewController {
         
         // Configure Bar Button Item
         addNoteBtn.isEnabled = false
+        showRecordsBtn.isEnabled = false
         
         UIView.animate(withDuration: 0.3) {
             self.addRecordView.transform = CGAffineTransform.identity
@@ -146,6 +148,7 @@ class NoteViewController: UIViewController {
                 note.hoursCost += Double(self.slider.value/60)
             }
             self.addNoteBtn.isEnabled = true
+            self.showRecordsBtn.isEnabled = true
             self.visualEffectView.isHidden = true
             self.addRecordView.removeFromSuperview()
         }

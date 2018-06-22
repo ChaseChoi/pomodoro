@@ -120,6 +120,7 @@
                         <outlet property="addNoteBtn" destination="hKS-v1-CZS" id="EXg-GV-AKJ"/>
                         <outlet property="addRecordView" destination="hmW-37-LZl" id="sWG-vU-aFG"/>
                         <outlet property="messageLabel" destination="2GQ-bV-Ds2" id="Joe-mf-ThH"/>
+                        <outlet property="showRecordsBtn" destination="adK-Wa-lTB" id="XK1-Te-bro"/>
                         <outlet property="slider" destination="5v6-qt-6X7" id="QYW-9Y-9N4"/>
                         <outlet property="tableView" destination="hUv-EX-Hps" id="R2J-Q1-7c2"/>
                         <outlet property="timeToRecordLabel" destination="gE7-Sr-2mu" id="12v-Cx-6h7"/>
