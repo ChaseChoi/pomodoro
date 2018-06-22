@@ -36,8 +36,9 @@ class NoteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "番茄钟"
+        title = "待办事项"
         
+        // Setup View
         setupView()
         fetchNotes()
         updateView()
@@ -56,7 +57,6 @@ class NoteViewController: UIViewController {
                 return
             }
             addViewController.managedObjectContext = self.coreDataManager.managedObjectContext
-            print("Gotcha!")
         default:
             break;
         }
@@ -80,6 +80,8 @@ class NoteViewController: UIViewController {
     }()
     
     // MARK: - View Methods
+    
+    /// Configure messageLabel and tableView
     private func setupView() {
         setupMessageLabel()
         setupTableView()
@@ -95,13 +97,15 @@ class NoteViewController: UIViewController {
         tableView.estimatedRowHeight = estimatedRowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
     }
-
+    
+    /// Display messageLabel or tableView as per hasNotes
     private func updateView() {
         tableView.isHidden = !hasNotes
         messageLabel.isHidden = hasNotes
     }
     // MARK: - Helper Methods
     
+    /// perform fetch to get Notes data
     private func fetchNotes() {
         do {
             try self.fetchedResultsController.performFetch()
@@ -195,6 +199,10 @@ extension NoteViewController: UITableViewDataSource {
 extension NoteViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "删除"
     }
 }
 
