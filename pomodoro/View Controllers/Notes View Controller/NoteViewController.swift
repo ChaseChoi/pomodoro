@@ -40,7 +40,7 @@ class NoteViewController: UIViewController {
         super.viewDidLoad()
         
         title = "待办事项"
-        
+
         // Setup View
         setupView()
         fetchNotes()
@@ -122,8 +122,9 @@ class NoteViewController: UIViewController {
     func animateIn() {
         self.view.addSubview(addRecordView)
         addRecordView.center = self.view.center
-        
         addRecordView.transform = CGAffineTransform.init(translationX: 0, y: -1000)
+        
+        visualEffectView.isHidden = false
         
         UIView.animate(withDuration: 0.3) {
             self.addRecordView.transform = CGAffineTransform.identity
@@ -136,6 +137,7 @@ class NoteViewController: UIViewController {
             self.addRecordView.transform = CGAffineTransform.init(translationX: 0, y: -1000)
             self.visualEffectView.effect = nil
         }) { (success: Bool) in
+            self.visualEffectView.isHidden = true
             self.addRecordView.removeFromSuperview()
         }
     }
