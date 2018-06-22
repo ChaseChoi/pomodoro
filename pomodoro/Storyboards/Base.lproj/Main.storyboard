@@ -105,7 +105,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="mCz-4p-UvI">
-                        <barButtonItem key="leftBarButtonItem" title="统计" id="adK-Wa-lTB"/>
+                        <barButtonItem key="leftBarButtonItem" title="统计" id="adK-Wa-lTB">
+                            <connections>
+                                <segue destination="5ll-Mz-5t4" kind="presentation" modalTransitionStyle="flipHorizontal" id="Fct-RF-oEQ"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="hKS-v1-CZS">
                             <connections>
                                 <segue destination="LPf-Tc-YIQ" kind="presentation" identifier="AddNote" id="TBT-wy-T2M"/>
@@ -162,6 +166,21 @@
                 </view>
             </objects>
             <point key="canvasLocation" x="956" y="-733.5832083958021"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="8JJ-NM-fSY">
+            <objects>
+                <viewController id="5ll-Mz-5t4" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ejk-9V-E2l">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Fu2-Jj-GBP"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YYa-3R-oIm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1906" y="-358"/>
         </scene>
         <!--Add Note Table View Controller-->
         <scene sceneID="tKE-xY-XVS">
@@ -222,7 +241,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="71s-iK-viU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2887.1999999999998" y="-722.78860569715152"/>
+            <point key="canvasLocation" x="2866" y="-1123"/>
         </scene>
         <!--待办事项-->
         <scene sceneID="KE8-hD-RWa">
@@ -341,7 +360,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AbE-XD-Vzl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1948" y="-722.78860569715152"/>
+            <point key="canvasLocation" x="1916" y="-1123"/>
         </scene>
         <!--番茄钟-->
         <scene sceneID="gbz-Zz-TXc">
