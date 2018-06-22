@@ -153,13 +153,15 @@ class NoteViewController: UIViewController {
             self.visualEffectView.effect = nil
         }) { (success: Bool) in
             if let note = self.noteToAddRecord {
-                print(self.slider.value)
                 note.hoursCost += Double(self.slider.value/60)
             }
             self.addNoteBtn.isEnabled = true
             self.showRecordsBtn.isEnabled = true
             self.visualEffectView.isHidden = true
             self.addRecordView.removeFromSuperview()
+            
+            self.slider.setValue(25.0, animated: true)
+            self.timeToRecordLabel.text = "25"
         }
     }
     
