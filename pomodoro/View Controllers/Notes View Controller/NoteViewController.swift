@@ -20,10 +20,15 @@ class NoteViewController: UIViewController {
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addRecordView: UIView!
+    @IBOutlet weak var addNoteBtn: UIBarButtonItem!
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
+    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var timeToRecordLabel: UILabel!
     var effect: UIVisualEffect!
     
+    private var noteToAddRecord: Note?
     private let estimatedRowHeight = CGFloat(44.0)
+    private let stepOfSlider: Float = 5.0
     
     private var hasNotes: Bool {
         guard let fetchObjects = fetchedResultsController.fetchedObjects else {
@@ -102,10 +107,6 @@ class NoteViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
     }
     
-    @IBAction func addRecord() {
-        animateIn()
-    }
-    
     /// Display messageLabel or tableView as per hasNotes
     private func updateView() {
         tableView.isHidden = !hasNotes
@@ -117,14 +118,17 @@ class NoteViewController: UIViewController {
         effect = visualEffectView.effect
         addRecordView.layer.cornerRadius = 8
         visualEffectView.effect = nil
+        visualEffectView.isHidden = true
     }
     
     func animateIn() {
         self.view.addSubview(addRecordView)
         addRecordView.center = self.view.center
         addRecordView.transform = CGAffineTransform.init(translationX: 0, y: -1000)
-        
         visualEffectView.isHidden = false
+        
+        // Configure Bar Button Item
+        addNoteBtn.isEnabled = false
         
         UIView.animate(withDuration: 0.3) {
             self.addRecordView.transform = CGAffineTransform.identity
@@ -137,6 +141,11 @@ class NoteViewController: UIViewController {
             self.addRecordView.transform = CGAffineTransform.init(translationX: 0, y: -1000)
             self.visualEffectView.effect = nil
         }) { (success: Bool) in
+            if let note = self.noteToAddRecord {
+                print(self.slider.value)
+                note.hoursCost += Double(self.slider.value/60)
+            }
+            self.addNoteBtn.isEnabled = true
             self.visualEffectView.isHidden = true
             self.addRecordView.removeFromSuperview()
         }
@@ -145,6 +154,13 @@ class NoteViewController: UIViewController {
     @IBAction func dismissPopup() {
         animateOut()
     }
+    
+    @IBAction func sliderValueChanged(_ sender: UISlider) {
+        let roundedValue = round(sender.value / stepOfSlider) * stepOfSlider
+        sender.value = roundedValue
+        timeToRecordLabel.text = "\(Int(roundedValue))"
+    }
+    
     // MARK: - Helper Methods
     
     /// perform fetch to get Notes data
@@ -156,8 +172,10 @@ class NoteViewController: UIViewController {
             print("\(error), \(error.localizedDescription)")
         }
     }
+    
 }
 
+// MARK: -
 extension NoteViewController: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
@@ -241,6 +259,10 @@ extension NoteViewController: UITableViewDataSource {
 extension NoteViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        animateIn()
+        // Get the note item user pressed
+        noteToAddRecord = fetchedResultsController.object(at: indexPath)
+        
     }
     
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {

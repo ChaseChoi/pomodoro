@@ -68,10 +68,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1xQ-2B-hPl">
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1xQ-2B-hPl">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="HDz-Z2-fhT">
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HDz-Z2-fhT">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </view>
@@ -80,6 +79,12 @@
                                             </vibrancyEffect>
                                         </visualEffectView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="1xQ-2B-hPl" secondAttribute="trailing" id="KYn-Gz-Ly7"/>
+                                        <constraint firstItem="1xQ-2B-hPl" firstAttribute="top" secondItem="ZsY-Gb-v3n" secondAttribute="top" id="L7i-rO-11b"/>
+                                        <constraint firstItem="1xQ-2B-hPl" firstAttribute="leading" secondItem="ZsY-Gb-v3n" secondAttribute="leading" id="PbG-CY-kOv"/>
+                                        <constraint firstAttribute="bottom" secondItem="1xQ-2B-hPl" secondAttribute="bottom" id="lqw-0c-DUb"/>
+                                    </constraints>
                                 </view>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
@@ -100,11 +105,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="mCz-4p-UvI">
-                        <barButtonItem key="leftBarButtonItem" title="动画" id="adK-Wa-lTB">
-                            <connections>
-                                <action selector="addRecord" destination="BYZ-38-t0r" id="0Wf-ST-Bao"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="统计" id="adK-Wa-lTB"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="hKS-v1-CZS">
                             <connections>
                                 <segue destination="LPf-Tc-YIQ" kind="presentation" identifier="AddNote" id="TBT-wy-T2M"/>
@@ -112,9 +113,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addNoteBtn" destination="hKS-v1-CZS" id="EXg-GV-AKJ"/>
                         <outlet property="addRecordView" destination="hmW-37-LZl" id="sWG-vU-aFG"/>
                         <outlet property="messageLabel" destination="2GQ-bV-Ds2" id="Joe-mf-ThH"/>
+                        <outlet property="slider" destination="5v6-qt-6X7" id="QYW-9Y-9N4"/>
                         <outlet property="tableView" destination="hUv-EX-Hps" id="R2J-Q1-7c2"/>
+                        <outlet property="timeToRecordLabel" destination="gE7-Sr-2mu" id="12v-Cx-6h7"/>
                         <outlet property="visualEffectView" destination="zhJ-7t-Z9v" id="Ip1-mr-gFA"/>
                     </connections>
                 </viewController>
@@ -123,9 +127,12 @@
                     <rect key="frame" x="0.0" y="0.0" width="281" height="170"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="5v6-qt-6X7">
-                            <rect key="frame" x="81" y="71" width="118" height="30"/>
+                        <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="25" minValue="0.0" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="5v6-qt-6X7">
+                            <rect key="frame" x="41" y="71" width="212" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <connections>
+                                <action selector="sliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="lxE-7d-ZNX"/>
+                            </connections>
                         </slider>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Record" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iru-91-s2x">
                             <rect key="frame" x="0.0" y="0.0" width="281" height="21"/>
@@ -142,6 +149,13 @@
                                 <action selector="dismissPopup" destination="BYZ-38-t0r" eventType="touchUpInside" id="zP7-Ga-R8d"/>
                             </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gE7-Sr-2mu">
+                            <rect key="frame" x="117" y="42" width="21" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <viewLayoutGuide key="safeArea" id="SUT-8h-oln"/>
