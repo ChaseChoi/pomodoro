@@ -134,7 +134,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="mCz-4p-UvI">
-                        <barButtonItem key="leftBarButtonItem" title="统计" id="adK-Wa-lTB">
+                        <barButtonItem key="leftBarButtonItem" title="统计" image="piechart" id="adK-Wa-lTB">
                             <connections>
                                 <segue destination="wgO-JZ-WZ7" kind="presentation" identifier="ShowRecords" modalTransitionStyle="flipHorizontal" id="Fct-RF-oEQ"/>
                             </connections>
@@ -261,16 +261,50 @@
                                     <constraint firstAttribute="width" constant="343" id="jgu-z6-NxX"/>
                                 </constraints>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Tfi-Hs-jDi">
+                                <rect key="frame" x="25" y="89" width="325" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日用时:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vD5-VH-sYh">
+                                        <rect key="frame" x="0.0" y="0.0" width="109" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="qiD-YX-5dy">
+                                        <rect key="frame" x="0.0" y="30" width="133.5" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="261" verticalHuggingPriority="251" text="totalLbl" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wms-yu-iUI">
+                                                <rect key="frame" x="0.0" y="0.0" width="80.5" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小时" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2e-mi-dRq">
+                                                <rect key="frame" x="82.5" y="0.0" width="51" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="csW-aN-FGW"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Tfi-Hs-jDi" firstAttribute="top" secondItem="Fu2-Jj-GBP" secondAttribute="top" constant="25" id="6JT-IN-aM3"/>
                             <constraint firstItem="BSh-KZ-hZ7" firstAttribute="centerX" secondItem="ejk-9V-E2l" secondAttribute="centerX" id="D5z-d3-VYN"/>
+                            <constraint firstItem="Fu2-Jj-GBP" firstAttribute="trailing" secondItem="Tfi-Hs-jDi" secondAttribute="trailing" constant="25" id="bgg-SV-9Xw"/>
                             <constraint firstItem="BSh-KZ-hZ7" firstAttribute="top" secondItem="Fu2-Jj-GBP" secondAttribute="top" constant="100" id="bic-sV-buz"/>
+                            <constraint firstItem="Tfi-Hs-jDi" firstAttribute="leading" secondItem="Fu2-Jj-GBP" secondAttribute="leading" constant="25" id="cAE-O7-12P"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Fu2-Jj-GBP"/>
                     </view>
                     <navigationItem key="navigationItem" id="uCq-0F-yhK">
-                        <barButtonItem key="leftBarButtonItem" title="历史" id="jCv-0K-MND">
+                        <barButtonItem key="leftBarButtonItem" title="历史" image="history" id="jCv-0K-MND">
                             <connections>
                                 <segue destination="U7z-sb-3m3" kind="show" identifier="showHistory" id="ruH-gs-Nx1"/>
                             </connections>
@@ -285,6 +319,7 @@
                         <outlet property="doneBtn" destination="S4k-Qg-7im" id="dSg-6o-6vj"/>
                         <outlet property="historyBtn" destination="jCv-0K-MND" id="me1-xm-hly"/>
                         <outlet property="pieChartView" destination="BSh-KZ-hZ7" id="m25-lS-mCR"/>
+                        <outlet property="todayTotalLabel" destination="Wms-yu-iUI" id="Ofz-e1-CKM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YYa-3R-oIm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -372,12 +407,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="f2M-17-xTS" firstAttribute="bottom" secondItem="8Bi-K9-erM" secondAttribute="bottom" id="1IX-ZE-gcg"/>
                             <constraint firstItem="yHs-bM-ApX" firstAttribute="centerY" secondItem="QHH-DB-hJ3" secondAttribute="centerY" id="Hnw-xi-bPG"/>
-                            <constraint firstItem="8Bi-K9-erM" firstAttribute="trailing" secondItem="f2M-17-xTS" secondAttribute="trailing" id="I3x-pi-n6i"/>
                             <constraint firstItem="yHs-bM-ApX" firstAttribute="centerX" secondItem="QHH-DB-hJ3" secondAttribute="centerX" id="Nok-6g-8XM"/>
-                            <constraint firstItem="8Bi-K9-erM" firstAttribute="leading" secondItem="f2M-17-xTS" secondAttribute="leading" id="jK1-Cc-MDG"/>
-                            <constraint firstItem="8Bi-K9-erM" firstAttribute="top" secondItem="f2M-17-xTS" secondAttribute="top" id="zIR-Hz-CkR"/>
+                            <constraint firstItem="8Bi-K9-erM" firstAttribute="bottom" secondItem="f2M-17-xTS" secondAttribute="bottom" id="V7Z-Vz-F7K"/>
+                            <constraint firstItem="8Bi-K9-erM" firstAttribute="top" secondItem="f2M-17-xTS" secondAttribute="top" id="VSl-XG-UuR"/>
+                            <constraint firstItem="8Bi-K9-erM" firstAttribute="leading" secondItem="f2M-17-xTS" secondAttribute="leading" id="sRP-pt-WKI"/>
+                            <constraint firstItem="8Bi-K9-erM" firstAttribute="trailing" secondItem="f2M-17-xTS" secondAttribute="trailing" id="yz6-JF-N8r"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="f2M-17-xTS"/>
                     </view>
@@ -455,7 +490,7 @@
         <scene sceneID="KE8-hD-RWa">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="y70-Wg-Jrn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="待办事项" id="dCr-Tv-p7Z"/>
+                    <tabBarItem key="tabBarItem" title="待办事项" image="todo" id="dCr-Tv-p7Z"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ti8-da-Ofz">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -589,7 +624,7 @@
         <scene sceneID="gbz-Zz-TXc">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gsU-mA-H8E" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="番茄钟" id="scs-QL-eyl"/>
+                    <tabBarItem key="tabBarItem" title="番茄钟" image="timer" id="scs-QL-eyl"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="88I-ag-kAo">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -623,4 +658,10 @@
             <point key="canvasLocation" x="1904.8" y="-358.4707646176912"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="history" width="24" height="24"/>
+        <image name="piechart" width="26" height="26"/>
+        <image name="timer" width="24" height="26"/>
+        <image name="todo" width="28" height="28"/>
+    </resources>
 </document>

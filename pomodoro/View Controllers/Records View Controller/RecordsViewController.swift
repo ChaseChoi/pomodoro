@@ -20,6 +20,7 @@ class RecordsViewController: UIViewController {
     @IBOutlet weak var pieChartView: PieChartView!
     @IBOutlet weak var doneBtn: UIBarButtonItem!
     @IBOutlet weak var historyBtn: UIBarButtonItem!
+    @IBOutlet weak var todayTotalLabel: UILabel!
     
     // MARK: Managed Object Context
     var managedObjectContext: NSManagedObjectContext?
@@ -37,7 +38,8 @@ class RecordsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "我的统计"
+        title = "今日统计"
+        todayTotalLabel.text = "0.0"
         
         setupPieChart()
     }
@@ -100,6 +102,7 @@ class RecordsViewController: UIViewController {
             let sum = notes.reduce(0) {
                 $0 + $1.timeCost
             }
+            todayTotalLabel.text = String(format: "%.1f", Double(sum/60))
             for note in notes {
                 if note.timeCost != 0 {
                     let dataEntry = PieChartDataEntry(value: note.timeCost/sum, label: note.contents)

@@ -128,7 +128,8 @@ extension TimerViewController: UNUserNotificationCenterDelegate {
         content.title = "计时结束"
         content.subtitle = "休息一下吧"
         content.body = "您已成功完成一个番茄钟!"
-        content.badge = 1
+        // TODO: handle badge
+        //        content.badge = 1
         content.sound = UNNotificationSound.default()
         content.categoryIdentifier = categoryIdentifier
         
