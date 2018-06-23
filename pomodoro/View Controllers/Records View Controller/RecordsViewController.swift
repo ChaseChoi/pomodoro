@@ -27,14 +27,19 @@ class RecordsViewController: UIViewController {
     var notesDataEntries = [PieChartDataEntry]()
     
     // MARK: - View
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        notesDataEntries.removeAll()
+        getTodayNotes()
+        populateDataEntries()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "我的统计"
         
         setupPieChart()
-        getTodayNotes()
-        populateDataEntries()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

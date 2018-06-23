@@ -174,6 +174,9 @@ extension HistoryViewController: UITableViewDataSource {
         // Fetch Note
         let record = fetchedResultsController.object(at: indexPath)
         
+        // Delete this record in Note entity
+        record.note?.timeCost -= record.timerLength
+        
         // Delete Note
         guard let managedObjectContext = managedObjectContext else {
             fatalError("No Managed Object Context Found")
