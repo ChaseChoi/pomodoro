@@ -25,12 +25,25 @@ class RecordsViewController: UIViewController {
         super.viewDidLoad()
         
         title = "我的统计"
-        pieChartView.chartDescription?.text = ""
-        pieChartView.noDataText = "暂无数据"
+        
+        setupPieChart()
         getTodayNotes()
         populateDataEntries()
     }
 
+    // MARK: -
+    func setupPieChart() {
+        let formatter = DateFormatter()
+        formatter.timeZone = NSTimeZone.local
+        formatter.setLocalizedDateFormatFromTemplate("ddMMyyyy")
+        let dateInfo = formatter.string(from: Date())
+        
+        pieChartView.chartDescription?.text = ""
+        pieChartView.noDataText = "暂无数据"
+        pieChartView.centerText = dateInfo
+    }
+    
+    // MARK: - Setup Data
     func getTodayNotes() {
         let request = NSFetchRequest<Note>()
         request.entity = Note.entity()
@@ -52,13 +65,16 @@ class RecordsViewController: UIViewController {
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
+        
     }
     func populateDataEntries() {
         if let notes = notes {
+            let sum = notes.reduce(0) {
+                $0 + $1.hoursCost
+            }
             for note in notes {
                 if note.hoursCost != 0 {
-                    let dataEntry = PieChartDataEntry(value: note.hoursCost)
-                    dataEntry.label = note.contents
+                    let dataEntry = PieChartDataEntry(value: note.hoursCost/sum, label: note.contents)
                     notesDataEntries.append(dataEntry)
                 }
             }
@@ -72,14 +88,18 @@ class RecordsViewController: UIViewController {
         let chartDataSet = PieChartDataSet(values: notesDataEntries, label: nil)
         let chartData = PieChartData(dataSet: chartDataSet)
         
+        chartDataSet.sliceSpace = 2
+        
         // Formatter
         let formatter = NumberFormatter()
         formatter.numberStyle = .percent
-        formatter.maximumFractionDigits = 1
-        formatter.multiplier = 1.0
-        chartDataSet.valueFormatter = formatter as? IValueFormatter
+        formatter.maximumFractionDigits = 0
+        formatter.percentSymbol = "%"
+        chartData.setValueFormatter(DefaultValueFormatter(formatter: formatter))
         
+        // Use Color Template
         chartDataSet.colors = ChartColorTemplates.material()
+        
         // Update
         pieChartView.data = chartData
         pieChartView.animate(xAxisDuration: 1, yAxisDuration: 1, easingOption: .easeOutQuad)

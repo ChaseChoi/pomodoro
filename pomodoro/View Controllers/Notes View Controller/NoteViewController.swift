@@ -53,6 +53,7 @@ class NoteViewController: UIViewController {
         fetchNotes()
         updateView()
         configureAddRecordView()
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
