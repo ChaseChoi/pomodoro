@@ -41,7 +41,7 @@ class AddNoteTableViewController: UITableViewController {
         // Configure Note
         note.contents = textField.text!
         note.createdAt = Date()
-        note.hoursCost = 0.0
+        note.timeCost = 0.0
         
         // Pop View Controller
         dismiss(animated: true, completion: nil)

@@ -154,9 +154,8 @@ class NoteViewController: UIViewController {
             self.visualEffectView.effect = nil
         }) { (success: Bool) in
             if let note = self.noteToAddRecord {
-                let timerLengthInHour = Double(self.slider.value/60)
                 let timerLengthInMin = Double(self.slider.value)
-                note.hoursCost += timerLengthInHour
+                note.timeCost += timerLengthInMin
                 
                 // Add timer record
                 let record = Record(context: self.coreDataManager.managedObjectContext)
@@ -279,7 +278,7 @@ extension NoteViewController: UITableViewDataSource {
         let note = fetchedResultsController.object(at: indexPath)
         
         cell.contentsLabel.text = note.contents
-        cell.costTimeLabel.text = String(format: "%.1f", note.hoursCost)
+        cell.costTimeLabel.text = String(format: "%.1f", Double(note.timeCost/60))
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

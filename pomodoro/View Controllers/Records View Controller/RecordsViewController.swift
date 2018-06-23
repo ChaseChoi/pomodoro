@@ -91,11 +91,11 @@ class RecordsViewController: UIViewController {
     func populateDataEntries() {
         if let notes = notes {
             let sum = notes.reduce(0) {
-                $0 + $1.hoursCost
+                $0 + $1.timeCost
             }
             for note in notes {
-                if note.hoursCost != 0 {
-                    let dataEntry = PieChartDataEntry(value: note.hoursCost/sum, label: note.contents)
+                if note.timeCost != 0 {
+                    let dataEntry = PieChartDataEntry(value: note.timeCost/sum, label: note.contents)
                     notesDataEntries.append(dataEntry)
                 }
             }
