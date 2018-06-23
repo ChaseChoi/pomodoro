@@ -66,6 +66,8 @@ class RecordsViewController: UIViewController {
         
         pieChartView.chartDescription?.text = ""
         pieChartView.noDataText = "暂无数据"
+        pieChartView.noDataFont = UIFont.systemFont(ofSize: 17)
+        pieChartView.noDataTextColor = UIColor(red: 152/256, green: 166/256, blue: 195/256, alpha: 1)
         pieChartView.centerText = dateInfo
     }
     
