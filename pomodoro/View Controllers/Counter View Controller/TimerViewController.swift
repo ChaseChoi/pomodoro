@@ -20,8 +20,8 @@ class TimerViewController: UIViewController {
     var timer = Timer()
     var timerIsOn = false
     var resumeTapped = false
-    var totalTime = 5.0
-    var secondsRemaining = 5.0
+    var totalTime = 1500.0
+    var secondsRemaining = 1500.0
     
     // MARK: -
     override func viewDidLoad() {
