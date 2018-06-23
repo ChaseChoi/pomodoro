@@ -40,7 +40,7 @@ class RecordsViewController: UIViewController {
         
         title = "今日统计"
         todayTotalLabel.text = "0.0"
-        
+
         setupPieChart()
     }
     
@@ -70,7 +70,11 @@ class RecordsViewController: UIViewController {
         pieChartView.noDataText = "暂无数据"
         pieChartView.noDataFont = UIFont.systemFont(ofSize: 17)
         pieChartView.noDataTextColor = UIColor(red: 152/256, green: 166/256, blue: 195/256, alpha: 1)
+        
         pieChartView.centerText = dateInfo
+        
+        // Set legend text
+        pieChartView.legend.font = UIFont.systemFont(ofSize: 15)
     }
     
     // MARK: - Setup Data
@@ -124,7 +128,7 @@ class RecordsViewController: UIViewController {
         // Formatter
         let formatter = NumberFormatter()
         formatter.numberStyle = .percent
-        formatter.maximumFractionDigits = 0
+        formatter.maximumFractionDigits = 1
         formatter.percentSymbol = "%"
         chartData.setValueFormatter(DefaultValueFormatter(formatter: formatter))
         
