@@ -11,6 +11,11 @@ import Charts
 import CoreData
 
 class RecordsViewController: UIViewController {
+    // MARK: - Segue
+    private enum Segue: String {
+        case showHistory
+    }
+    
     // MARK: - Properties
     @IBOutlet weak var pieChartView: PieChartView!
     @IBOutlet weak var doneBtn: UIBarButtonItem!
@@ -21,7 +26,7 @@ class RecordsViewController: UIViewController {
     var notes: [Note]?
     var notesDataEntries = [PieChartDataEntry]()
     
-    // MARK: -
+    // MARK: - View
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,7 +36,22 @@ class RecordsViewController: UIViewController {
         getTodayNotes()
         populateDataEntries()
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier else {
+            return
+        }
+        switch identifier {
+        case Segue.showHistory.rawValue:
+            guard let historyViewController = segue.destination as? HistoryViewController else {
+                return
+            }
+            historyViewController.managedObjectContext = managedObjectContext
+        default:
+            break
+        }
+    }
+    
     // MARK: -
     func setupPieChart() {
         let formatter = DateFormatter()
@@ -106,7 +126,7 @@ class RecordsViewController: UIViewController {
         pieChartView.animate(xAxisDuration: 1, yAxisDuration: 1, easingOption: .easeOutQuad)
     }
 
-    // MARK: -    
+    // MARK: -
     @IBAction func done() {
         dismiss(animated: true, completion: nil)
     }

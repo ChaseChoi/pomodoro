@@ -78,7 +78,7 @@ class NoteViewController: UIViewController {
             }
             recordsViewController.managedObjectContext = self.coreDataManager.managedObjectContext
         default:
-            break;
+            break
         }
 
     }

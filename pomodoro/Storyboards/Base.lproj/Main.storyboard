@@ -188,7 +188,7 @@
                     <navigationItem key="navigationItem" id="uCq-0F-yhK">
                         <barButtonItem key="leftBarButtonItem" title="历史" id="jCv-0K-MND">
                             <connections>
-                                <segue destination="U7z-sb-3m3" kind="show" id="ruH-gs-Nx1"/>
+                                <segue destination="U7z-sb-3m3" kind="show" identifier="showHistory" id="ruH-gs-Nx1"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="完成" style="done" id="S4k-Qg-7im">
@@ -207,10 +207,10 @@
             </objects>
             <point key="canvasLocation" x="2844" y="-358.4707646176912"/>
         </scene>
-        <!--View Controller-->
+        <!--History View Controller-->
         <scene sceneID="MOP-yz-9Yq">
             <objects>
-                <viewController id="U7z-sb-3m3" sceneMemberID="viewController">
+                <viewController id="U7z-sb-3m3" customClass="HistoryViewController" customModule="pomodoro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QHH-DB-hJ3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
