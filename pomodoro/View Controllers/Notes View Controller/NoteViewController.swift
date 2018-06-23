@@ -175,6 +175,21 @@ class NoteViewController: UIViewController {
     }
     
     @IBAction func dismissPopup() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.addRecordView.transform = CGAffineTransform.init(translationX: 0, y: -1000)
+            self.visualEffectView.effect = nil
+        }) { (success: Bool) in
+            self.addNoteBtn.isEnabled = true
+            self.showRecordsBtn.isEnabled = true
+            self.visualEffectView.isHidden = true
+            self.addRecordView.removeFromSuperview()
+            
+            self.slider.setValue(25.0, animated: true)
+            self.timeToRecordLabel.text = "25"
+        }
+    }
+    
+    @IBAction func finishPopup() {
         animateOut()
     }
     
