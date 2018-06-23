@@ -153,7 +153,17 @@ extension HistoryViewController: UITableViewDataSource {
             return nil
         }
         let currentSection = sections[section]
-        return currentSection.name
+        
+        // Format date title
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss +zzzz"
+
+        let formateDate = dateFormatter.date(from: currentSection.name)!
+        dateFormatter.dateFormat = "yyyy年MM月dd日 HH:mm"
+        let date = dateFormatter.string(from: formateDate)
+
+        return date
+//        return currentSection.name
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
