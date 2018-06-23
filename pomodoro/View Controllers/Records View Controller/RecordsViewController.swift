@@ -12,8 +12,9 @@ import CoreData
 
 class RecordsViewController: UIViewController {
     // MARK: - Properties
-    @IBOutlet weak var cancelBtn:  UIBarButtonItem!
     @IBOutlet weak var pieChartView: PieChartView!
+    @IBOutlet weak var doneBtn: UIBarButtonItem!
+    @IBOutlet weak var historyBtn: UIBarButtonItem!
     
     // MARK: Managed Object Context
     var managedObjectContext: NSManagedObjectContext?
@@ -105,10 +106,8 @@ class RecordsViewController: UIViewController {
         pieChartView.animate(xAxisDuration: 1, yAxisDuration: 1, easingOption: .easeOutQuad)
     }
 
-    // MARK: -
-    @IBAction func cancel() {
+    // MARK: -    
+    @IBAction func done() {
         dismiss(animated: true, completion: nil)
     }
-    
-    
 }

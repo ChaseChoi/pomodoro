@@ -186,20 +186,41 @@
                         <viewLayoutGuide key="safeArea" id="Fu2-Jj-GBP"/>
                     </view>
                     <navigationItem key="navigationItem" id="uCq-0F-yhK">
-                        <barButtonItem key="leftBarButtonItem" title="取消" id="9IF-to-eaa">
+                        <barButtonItem key="leftBarButtonItem" title="历史" id="jCv-0K-MND">
                             <connections>
-                                <action selector="cancel" destination="5ll-Mz-5t4" id="Q7r-ax-NvY"/>
+                                <segue destination="U7z-sb-3m3" kind="show" id="ruH-gs-Nx1"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="完成" style="done" id="S4k-Qg-7im">
+                            <connections>
+                                <action selector="done" destination="5ll-Mz-5t4" id="9ec-wN-nYk"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="cancelBtn" destination="9IF-to-eaa" id="wwR-WP-KLW"/>
+                        <outlet property="doneBtn" destination="S4k-Qg-7im" id="dSg-6o-6vj"/>
+                        <outlet property="historyBtn" destination="jCv-0K-MND" id="me1-xm-hly"/>
                         <outlet property="pieChartView" destination="BSh-KZ-hZ7" id="m25-lS-mCR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YYa-3R-oIm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2844" y="-358.4707646176912"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="MOP-yz-9Yq">
+            <objects>
+                <viewController id="U7z-sb-3m3" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QHH-DB-hJ3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="f2M-17-xTS"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c0G-d8-ulL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3899" y="-358"/>
         </scene>
         <!--Add Note Table View Controller-->
         <scene sceneID="tKE-xY-XVS">
@@ -355,8 +376,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="gsU-mA-H8E" kind="relationship" relationship="viewControllers" id="bxH-nB-JyX"/>
                         <segue destination="y70-Wg-Jrn" kind="relationship" relationship="viewControllers" id="9Ex-ao-R9I"/>
+                        <segue destination="gsU-mA-H8E" kind="relationship" relationship="viewControllers" id="bxH-nB-JyX"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3xf-yy-hka" userLabel="First Responder" sceneMemberID="firstResponder"/>
