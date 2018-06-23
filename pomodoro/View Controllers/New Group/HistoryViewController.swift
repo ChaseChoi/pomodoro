@@ -34,7 +34,7 @@ class HistoryViewController: UIViewController {
         guard let managedObjectContext = self.managedObjectContext else {
             fatalError("No Managed Object Context Found")
         }
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: "addedDate", cacheName: nil)
         
         fetchedResultsController.delegate = self
         return fetchedResultsController
@@ -94,14 +94,25 @@ extension HistoryViewController: NSFetchedResultsControllerDelegate {
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
+        
+        switch (type) {
         case .insert:
             if let indexPath = newIndexPath {
-                tableView.insertRows(at: [indexPath], with: .fade)
+                // calculate indexSet based of current section
+                let indexSet = NSIndexSet(index: indexPath.section)
+                
+                // insert section at this indexSet using table view insertSections method
+                tableView.insertSections(indexSet as IndexSet, with: .fade)
             }
         case .delete:
             if let indexPath = indexPath {
-                tableView.deleteRows(at: [indexPath], with: .fade)
+                
+                /*calculate indexSet based of current section*/
+                let indexSet = NSIndexSet(index: indexPath.section)
+                
+                /*delete section at this indexSet using table view deleteSections method*/
+                tableView.deleteSections(indexSet as IndexSet, with: .fade)
+                
             }
         case .update:
             if let indexPath = indexPath, let cell = tableView.cellForRow(at: indexPath) as? HistoryTableViewCell {
@@ -109,12 +120,16 @@ extension HistoryViewController: NSFetchedResultsControllerDelegate {
             }
         case .move:
             if let indexPath = indexPath {
-                tableView.deleteRows(at: [indexPath], with: .fade)
+                let indexSet = NSIndexSet(index: indexPath.section)
+                tableView.deleteSections(indexSet as IndexSet, with: .fade)
             }
             
             if let newIndexPath = newIndexPath {
-                tableView.insertRows(at: [newIndexPath], with: .fade)
+                let indexSet = NSIndexSet(index: newIndexPath.section)
+                tableView.insertSections(indexSet as IndexSet, with: .fade)
             }
+            break;
+            
         }
     }
 }
@@ -132,6 +147,13 @@ extension HistoryViewController: UITableViewDataSource {
             return 0
         }
         return section.numberOfObjects
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let sections = fetchedResultsController.sections else {
+            return nil
+        }
+        let currentSection = sections[section]
+        return currentSection.name
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
