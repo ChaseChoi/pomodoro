@@ -15,6 +15,7 @@
 		160AC4AF20DB8F0C009FD49D /* Notes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 160AC4AD20DB8F0C009FD49D /* Notes.xcdatamodeld */; };
 		160AC4B420DB9807009FD49D /* AddNoteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160AC4B320DB9807009FD49D /* AddNoteTableViewController.swift */; };
 		16654AB920DDEEAB00A25C5E /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16654AB820DDEEAB00A25C5E /* HistoryViewController.swift */; };
+		16654ABB20DDF5E500A25C5E /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16654ABA20DDF5E500A25C5E /* HistoryTableViewCell.swift */; };
 		16E514ED20DBBEAD007AD8A3 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E514EC20DBBEAD007AD8A3 /* NoteViewController.swift */; };
 		16E514F020DBCA33007AD8A3 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E514EF20DBCA33007AD8A3 /* NoteTableViewCell.swift */; };
 		16E514F420DC8007007AD8A3 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E514F320DC8007007AD8A3 /* TimerViewController.swift */; };
@@ -34,6 +35,7 @@
 		160AC4AE20DB8F0C009FD49D /* Notes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Notes.xcdatamodel; sourceTree = "<group>"; };
 		160AC4B320DB9807009FD49D /* AddNoteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteTableViewController.swift; sourceTree = "<group>"; };
 		16654AB820DDEEAB00A25C5E /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		16654ABA20DDF5E500A25C5E /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		16E514EC20DBBEAD007AD8A3 /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		16E514EF20DBCA33007AD8A3 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 		16E514F320DC8007007AD8A3 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				16654AB820DDEEAB00A25C5E /* HistoryViewController.swift */,
+				16654ABA20DDF5E500A25C5E /* HistoryTableViewCell.swift */,
 			);
 			name = "History View Controller";
 			path = "New Group";
@@ -322,6 +325,7 @@
 				160AC4B420DB9807009FD49D /* AddNoteTableViewController.swift in Sources */,
 				16E514F420DC8007007AD8A3 /* TimerViewController.swift in Sources */,
 				160AC49320DB7D69009FD49D /* AppDelegate.swift in Sources */,
+				16654ABB20DDF5E500A25C5E /* HistoryTableViewCell.swift in Sources */,
 				16E514ED20DBBEAD007AD8A3 /* NoteViewController.swift in Sources */,
 				160AC4AF20DB8F0C009FD49D /* Notes.xcdatamodeld in Sources */,
 				16654AB920DDEEAB00A25C5E /* HistoryViewController.swift in Sources */,
