@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class TimerViewController: UIViewController {
     
@@ -19,14 +20,19 @@ class TimerViewController: UIViewController {
     var timer = Timer()
     var timerIsOn = false
     var resumeTapped = false
-    var totalTime = 1500.0
-    var secondsRemaining = 1500.0
+    var totalTime = 5.0
+    var secondsRemaining = 5.0
     
     // MARK: -
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "番茄钟"
+        
+        // User Notification Authorization
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
+        
         // Congiure titles for buttons
         startButton.setTitle("开始", for: .normal)
         stopButton.setTitle("暂停", for: .normal)
@@ -86,17 +92,11 @@ class TimerViewController: UIViewController {
     @objc func updateTimer() {
         if secondsRemaining < 1 {
             resetButton.sendActions(for: .touchUpInside)
-            showAlert()
+            showNotification()
         } else {
             secondsRemaining -= 1
             timeLabel.text = timeString(time: secondsRemaining)
         }
-    }
-    func showAlert() {
-        let alert = UIAlertController(title: "计时结束", message: "番茄钟计时已结束", preferredStyle: .alert)
-        let action = UIAlertAction(title: "好", style: .default, handler: nil)
-        alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
     }
     
     // Initial state of buttons
@@ -105,6 +105,54 @@ class TimerViewController: UIViewController {
         stopButton.isEnabled = false
         resetButton.isEnabled = false
     }
-    
-    
 }
+
+extension TimerViewController: UNUserNotificationCenterDelegate {
+    
+    func showNotification() {
+        let actionIdentifier = "done"
+        let action = UNNotificationAction(identifier: actionIdentifier, title: "完成", options: UNNotificationActionOptions.foreground)
+
+        let categoryIdentifier = "finishCategory"
+        let category = UNNotificationCategory(identifier: categoryIdentifier, actions: [action], intentIdentifiers: [], options: [])
+        UNUserNotificationCenter.current().setNotificationCategories([category])
+        
+        let content = UNMutableNotificationContent()
+        content.title = "计时结束"
+        content.subtitle = "休息一下吧"
+        content.body = "您已成功完成一个番茄钟!"
+        content.badge = 1
+        content.sound = UNNotificationSound.default()
+        content.categoryIdentifier = categoryIdentifier
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.4, repeats: false)
+        let request = UNNotificationRequest(identifier: "timerDone", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+    
+    // called when user interacts with notification (app not running in foreground)
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse, withCompletionHandler
+        completionHandler: @escaping () -> Void) {
+        
+        // do something with the notification
+        print(response.notification.request.content.userInfo)
+        if response.actionIdentifier == "done" {
+            print("Done!")
+        }
+        
+        // the docs say you should execute this asap
+        return completionHandler()
+    }
+    
+    // called if app is running in foreground
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent
+        notification: UNNotification, withCompletionHandler completionHandler:
+        @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        // show alert while app is running in foreground
+        return completionHandler(UNNotificationPresentationOptions.alert)
+    }
+}
+
+
