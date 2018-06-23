@@ -248,7 +248,18 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="U7z-sb-3m3" id="Erx-y1-Ilm"/>
+                                    <outlet property="delegate" destination="U7z-sb-3m3" id="MPF-8q-RdA"/>
+                                </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="无历史记录" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHs-bM-ApX">
+                                <rect key="frame" x="0.0" y="311" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -259,6 +270,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="f2M-17-xTS"/>
                     </view>
+                    <connections>
+                        <outlet property="messageLabel" destination="yHs-bM-ApX" id="Pua-qj-Zvp"/>
+                        <outlet property="tableView" destination="8Bi-K9-erM" id="IkK-LG-UbL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c0G-d8-ulL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

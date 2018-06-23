@@ -7,12 +7,12 @@
         <relationship name="records" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Record" inverseName="note" inverseEntity="Record" syncable="YES"/>
     </entity>
     <entity name="Record" representedClassName="Record" syncable="YES" codeGenerationType="class">
-        <attribute name="addedDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="timerLength" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="records" inverseEntity="Note" syncable="YES"/>
+        <attribute name="addedDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="timerLength" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="note" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="records" inverseEntity="Note" syncable="YES"/>
     </entity>
     <elements>
         <element name="Note" positionX="-63" positionY="-18" width="128" height="105"/>
-        <element name="Record" positionX="63" positionY="27" width="128" height="90"/>
+        <element name="Record" positionX="205" positionY="9" width="128" height="88"/>
     </elements>
 </model>

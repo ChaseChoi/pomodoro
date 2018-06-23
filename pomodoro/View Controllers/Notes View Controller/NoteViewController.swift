@@ -42,6 +42,22 @@ class NoteViewController: UIViewController {
     // MARK: -
     private var coreDataManager = CoreDataManager(modelName: "Notes")
     
+    // MARK: -
+    private lazy var fetchedResultsController: NSFetchedResultsController<Note> = {
+        // Create Fetch Request
+        let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
+        
+        // Configure Fetch Request
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Note.createdAt), ascending: false)]
+        
+        // Create Fetched Results Controller
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.coreDataManager.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        // Configure Fetched Results Controller
+        fetchedResultsController.delegate = self
+        return fetchedResultsController
+    }()
+    
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,22 +98,6 @@ class NoteViewController: UIViewController {
         }
 
     }
-    
-    // MARK: -
-    private lazy var fetchedResultsController: NSFetchedResultsController<Note> = {
-        // Create Fetch Request
-        let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
-        
-        // Configure Fetch Request
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Note.createdAt), ascending: false)]
-        
-        // Create Fetched Results Controller
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.coreDataManager.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        
-        // Configure Fetched Results Controller
-        fetchedResultsController.delegate = self
-        return fetchedResultsController
-    }()
     
     // MARK: - View Methods
     
@@ -154,7 +154,15 @@ class NoteViewController: UIViewController {
             self.visualEffectView.effect = nil
         }) { (success: Bool) in
             if let note = self.noteToAddRecord {
-                note.hoursCost += Double(self.slider.value/60)
+                let timerLengthInHour = Double(self.slider.value/60)
+                let timerLengthInMin = Double(self.slider.value)
+                note.hoursCost += timerLengthInHour
+                
+                // Add timer record
+                let record = Record(context: self.coreDataManager.managedObjectContext)
+                record.addedDate = Date()
+                record.timerLength = timerLengthInMin
+                record.note = note
             }
             self.addNoteBtn.isEnabled = true
             self.showRecordsBtn.isEnabled = true
