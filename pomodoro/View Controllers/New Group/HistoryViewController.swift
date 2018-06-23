@@ -16,7 +16,8 @@ class HistoryViewController: UIViewController {
     // MARK: - View Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        title = "历史记录"
     }
 
     override func didReceiveMemoryWarning() {
