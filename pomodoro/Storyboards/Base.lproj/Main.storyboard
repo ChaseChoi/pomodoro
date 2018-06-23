@@ -228,7 +228,7 @@
                                 </button>
                             </subviews>
                         </stackView>
-                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="25" minValue="5" maxValue="55" translatesAutoresizingMaskIntoConstraints="NO" id="5v6-qt-6X7">
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="25" minValue="5" maxValue="45" translatesAutoresizingMaskIntoConstraints="NO" id="5v6-qt-6X7">
                             <rect key="frame" x="8" y="119.5" width="311" height="41"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="H8F-c3-O9w"/>
