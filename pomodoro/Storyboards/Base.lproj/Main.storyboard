@@ -157,6 +157,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="K6V-1u-YuW" userLabel="Exit" sceneMemberID="exit"/>
                 <view contentMode="scaleToFill" id="hmW-37-LZl">
                     <rect key="frame" x="0.0" y="0.0" width="327" height="279"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -199,8 +200,14 @@
                                     <state key="normal" title="完成">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="6"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="finishPopup" destination="BYZ-38-t0r" eventType="touchUpInside" id="g1b-6A-Zu2"/>
+                                        <action selector="next:" destination="K6V-1u-YuW" eventType="touchUpInside" id="ttA-DC-h4Z"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yCW-Ls-0UR">
@@ -210,6 +217,11 @@
                                     <state key="normal" title="关闭">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="6"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="dismissPopup" destination="BYZ-38-t0r" eventType="touchUpInside" id="iIk-xJ-pCD"/>
                                     </connections>
