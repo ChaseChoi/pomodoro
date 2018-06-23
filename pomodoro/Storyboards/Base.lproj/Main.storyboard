@@ -527,7 +527,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="MGm-Xe-RIR">
-                                <rect key="frame" x="10" y="357" width="355" height="176"/>
+                                <rect key="frame" x="10" y="357" width="355" height="109"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6l-L5-6Nm">
                                         <rect key="frame" x="0.0" y="0.0" width="355" height="42"/>
@@ -561,17 +561,6 @@
                                             <action selector="stopBtnTapped" destination="iTw-ke-JWt" eventType="touchUpInside" id="Lfi-yk-Wct"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQd-nP-doJ">
-                                        <rect key="frame" x="0.0" y="134" width="355" height="42"/>
-                                        <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" title="reset">
-                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="resetBtnTapped" destination="iTw-ke-JWt" eventType="touchUpInside" id="in3-r1-fF3"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQ1-9n-t6o">
@@ -597,7 +586,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="8gU-4A-urx"/>
                     <connections>
-                        <outlet property="resetButton" destination="nQd-nP-doJ" id="XSK-JS-RL7"/>
                         <outlet property="startButton" destination="W6l-L5-6Nm" id="r0b-Gj-uYk"/>
                         <outlet property="stopButton" destination="7em-cv-Tpe" id="zLb-2t-yBc"/>
                         <outlet property="timeLabel" destination="BQ1-9n-t6o" id="asl-rx-CNo"/>

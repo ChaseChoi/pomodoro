@@ -15,7 +15,6 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
-    @IBOutlet weak var resetButton: UIButton!
     
     var timer = Timer()
     var timerIsOn = false
@@ -33,11 +32,6 @@ class TimerViewController: UIViewController {
         UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
         
-        // Congiure titles for buttons
-        startButton.setTitle("开始", for: .normal)
-        stopButton.setTitle("暂停", for: .normal)
-        resetButton.setTitle("重置", for: .normal)
-        
         // Initial state of buttons
         configureInitBtns()
         
@@ -49,6 +43,10 @@ class TimerViewController: UIViewController {
         if !timerIsOn {
             runTimer()
             timerIsOn = true
+            startButton.setTitle("重置", for: .normal)
+        } else {
+            resetTimer()
+            timerIsOn = false
         }
         
     }
@@ -65,7 +63,7 @@ class TimerViewController: UIViewController {
         }
     }
     
-    @IBAction func resetBtnTapped() {
+    func resetTimer() {
         timer.invalidate()
         
         secondsRemaining = totalTime
@@ -74,6 +72,7 @@ class TimerViewController: UIViewController {
         resumeTapped = false
         configureInitBtns()
     }
+    
     // MARK: Helper Methods
     func timeString(time: TimeInterval) -> String {
         let minutes = Int(secondsRemaining) / 60 % 60
@@ -85,9 +84,8 @@ class TimerViewController: UIViewController {
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         
-        startButton.isEnabled = false
         stopButton.isEnabled = true
-        resetButton.isEnabled = true
+        stopButton.backgroundColor = UIColor(red: 255/255, green: 147/255, blue: 0, alpha: 1)
         
         var backgroundTask = UIBackgroundTaskIdentifier()
         backgroundTask = UIApplication.shared.beginBackgroundTask(expirationHandler: {
@@ -98,7 +96,7 @@ class TimerViewController: UIViewController {
     
     @objc func updateTimer() {
         if secondsRemaining < 1 {
-            resetButton.sendActions(for: .touchUpInside)
+            resetTimer()
             showNotification()
         } else {
             secondsRemaining -= 1
@@ -108,9 +106,12 @@ class TimerViewController: UIViewController {
     
     // Initial state of buttons
     func configureInitBtns() {
-        startButton.isEnabled = true
+        // Congiure titles for buttons
+        startButton.setTitle("开始", for: .normal)
+        stopButton.setTitle("暂停", for: .normal)
+        
         stopButton.isEnabled = false
-        resetButton.isEnabled = false
+        stopButton.backgroundColor = UIColor(red: 152/255, green: 166/255, blue: 195/255, alpha: 1)
     }
 }
 
