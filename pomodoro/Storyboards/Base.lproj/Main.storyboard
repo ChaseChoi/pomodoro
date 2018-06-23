@@ -329,7 +329,7 @@
         <!--History View Controller-->
         <scene sceneID="MOP-yz-9Yq">
             <objects>
-                <viewController id="U7z-sb-3m3" customClass="HistoryViewController" customModule="pomodoro" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="U7z-sb-3m3" customClass="HistoryViewController" customModule="pomodoro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QHH-DB-hJ3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
