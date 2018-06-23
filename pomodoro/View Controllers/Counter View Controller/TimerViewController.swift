@@ -84,9 +84,16 @@ class TimerViewController: UIViewController {
     // MARK: Congiure Timer
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        
         startButton.isEnabled = false
         stopButton.isEnabled = true
         resetButton.isEnabled = true
+        
+        var backgroundTask = UIBackgroundTaskIdentifier()
+        backgroundTask = UIApplication.shared.beginBackgroundTask(expirationHandler: {
+            UIApplication.shared.endBackgroundTask(backgroundTask)
+        })
+        RunLoop.current.add(timer, forMode: RunLoopMode.defaultRunLoopMode)
     }
     
     @objc func updateTimer() {
