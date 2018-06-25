@@ -114,9 +114,7 @@ class RecordsViewController: UIViewController {
                 }
             }
         }
-        if notesDataEntries.count > 0 {
-            updateChartData()
-        }
+        updateChartData()
     }
     
     func updateChartData() {
