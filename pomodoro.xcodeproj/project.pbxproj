@@ -17,6 +17,7 @@
 		1621D2FE20DE5C1700A65B3A /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1621D2FD20DE5C1700A65B3A /* Record.swift */; };
 		16654AB920DDEEAB00A25C5E /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16654AB820DDEEAB00A25C5E /* HistoryViewController.swift */; };
 		16654ABB20DDF5E500A25C5E /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16654ABA20DDF5E500A25C5E /* HistoryTableViewCell.swift */; };
+		166893E620EF9A0400F1AFC7 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166893E520EF9A0400F1AFC7 /* Note.swift */; };
 		16E514ED20DBBEAD007AD8A3 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E514EC20DBBEAD007AD8A3 /* NoteViewController.swift */; };
 		16E514F020DBCA33007AD8A3 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E514EF20DBCA33007AD8A3 /* NoteTableViewCell.swift */; };
 		16E514F420DC8007007AD8A3 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E514F320DC8007007AD8A3 /* TimerViewController.swift */; };
@@ -38,6 +39,7 @@
 		1621D2FD20DE5C1700A65B3A /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		16654AB820DDEEAB00A25C5E /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		16654ABA20DDF5E500A25C5E /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		166893E520EF9A0400F1AFC7 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		16E514EC20DBBEAD007AD8A3 /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		16E514EF20DBCA33007AD8A3 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 		16E514F320DC8007007AD8A3 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			children = (
 				160AC4AD20DB8F0C009FD49D /* Notes.xcdatamodeld */,
 				1621D2FD20DE5C1700A65B3A /* Record.swift */,
+				166893E520EF9A0400F1AFC7 /* Note.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				16654AB920DDEEAB00A25C5E /* HistoryViewController.swift in Sources */,
 				16E514F020DBCA33007AD8A3 /* NoteTableViewCell.swift in Sources */,
 				16EABB0020DCEE830021B6C3 /* RecordsViewController.swift in Sources */,
+				166893E620EF9A0400F1AFC7 /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

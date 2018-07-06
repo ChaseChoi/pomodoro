@@ -51,7 +51,7 @@ class NoteViewController: UIViewController {
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Note.createdAt), ascending: false)]
         
         // Create Fetched Results Controller
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.coreDataManager.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.coreDataManager.managedObjectContext, sectionNameKeyPath: #keyPath(Note.dateForSection), cacheName: nil)
         
         // Configure Fetched Results Controller
         fetchedResultsController.delegate = self
@@ -63,7 +63,7 @@ class NoteViewController: UIViewController {
         super.viewDidLoad()
         
         title = "待办事项"
-
+        
         // Setup View
         setupView()
         fetchNotes()
@@ -96,7 +96,7 @@ class NoteViewController: UIViewController {
         default:
             break
         }
-
+        
     }
     
     // MARK: - View Methods
@@ -217,7 +217,7 @@ extension NoteViewController: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
-
+    
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
         updateView()
@@ -247,6 +247,19 @@ extension NoteViewController: NSFetchedResultsControllerDelegate {
             }
         }
     }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        let indexSet = IndexSet(integer: sectionIndex)
+        
+        switch type {
+        case .insert:
+            tableView.insertSections(indexSet, with: .automatic)
+        case .delete:
+            tableView.deleteSections(indexSet, with: .automatic)
+        default:
+            break
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -273,6 +286,15 @@ extension NoteViewController: UITableViewDataSource {
         configure(cell, at: indexPath)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let sections = fetchedResultsController.sections else {
+            return nil
+        }
+        let currentSection = sections[section]
+        
+        return currentSection.name
     }
     
     func configure(_ cell: NoteTableViewCell, at indexPath: IndexPath) {
