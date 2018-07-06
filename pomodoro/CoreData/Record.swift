@@ -9,5 +9,12 @@
 import Foundation
 
 extension Record {
-    // TODO: Add keypath
+    @objc var dateForSection: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale(identifier: "zh_CN")
+        let date = dateFormatter.string(from: self.addedDate!)
+        return date
+    }
 }

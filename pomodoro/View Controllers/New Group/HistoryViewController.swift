@@ -34,7 +34,7 @@ class HistoryViewController: UIViewController {
         guard let managedObjectContext = self.managedObjectContext else {
             fatalError("No Managed Object Context Found")
         }
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: "addedDate", cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: #keyPath(Record.dateForSection), cacheName: nil)
         
         fetchedResultsController.delegate = self
         return fetchedResultsController
@@ -94,42 +94,29 @@ extension HistoryViewController: NSFetchedResultsControllerDelegate {
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+            case .insert:
+            tableView.insertRows(at: [newIndexPath!], with: .automatic)
+            case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .automatic)
+            case .update:
+            let cell = tableView.cellForRow(at: indexPath!) as! HistoryTableViewCell
+            configure(cell, at: indexPath!)
+            case .move:
+            tableView.deleteRows(at: [indexPath!], with: .automatic)
+            tableView.insertRows(at: [newIndexPath!], with: .automatic)
+        }
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        let indexSet = IndexSet(integer: sectionIndex)
         
-        switch (type) {
+        switch type {
         case .insert:
-            if let indexPath = newIndexPath {
-                // calculate indexSet based of current section
-                let indexSet = NSIndexSet(index: indexPath.section)
-                
-                // insert section at this indexSet using table view insertSections method
-                tableView.insertSections(indexSet as IndexSet, with: .fade)
-            }
+            tableView.insertSections(indexSet, with: .automatic)
         case .delete:
-            if let indexPath = indexPath {
-                
-                /*calculate indexSet based of current section*/
-                let indexSet = NSIndexSet(index: indexPath.section)
-                
-                /*delete section at this indexSet using table view deleteSections method*/
-                tableView.deleteSections(indexSet as IndexSet, with: .fade)
-                
-            }
-        case .update:
-            if let indexPath = indexPath, let cell = tableView.cellForRow(at: indexPath) as? HistoryTableViewCell {
-                configure(cell, at: indexPath)
-            }
-        case .move:
-            if let indexPath = indexPath {
-                let indexSet = NSIndexSet(index: indexPath.section)
-                tableView.deleteSections(indexSet as IndexSet, with: .fade)
-            }
-            
-            if let newIndexPath = newIndexPath {
-                let indexSet = NSIndexSet(index: newIndexPath.section)
-                tableView.insertSections(indexSet as IndexSet, with: .fade)
-            }
-            break;
-            
+            tableView.deleteSections(indexSet, with: .automatic)
+        default: break
         }
     }
 }
@@ -154,16 +141,7 @@ extension HistoryViewController: UITableViewDataSource {
         }
         let currentSection = sections[section]
         
-        // Format date title
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss +zzzz"
-
-        let formateDate = dateFormatter.date(from: currentSection.name)!
-        dateFormatter.dateFormat = "yyyy年MM月dd日 HH:mm"
-        let date = dateFormatter.string(from: formateDate)
-
-        return date
-//        return currentSection.name
+        return currentSection.name
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
