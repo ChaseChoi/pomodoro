@@ -30,8 +30,14 @@ class TimerViewController: UIViewController {
         
         // User Notification Authorization
         UNUserNotificationCenter.current().delegate = self
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
-        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: { granted, error in
+            if granted {
+                print("User notification are allowed.")
+            } else {
+                print("User notification are not allowed.")
+            }
+        })
+        UIApplication.shared.applicationIconBadgeNumber = 0
         // Initial state of buttons
         configureInitBtns()
         
@@ -119,7 +125,7 @@ extension TimerViewController: UNUserNotificationCenterDelegate {
     
     func showNotification() {
         let actionIdentifier = "done"
-        let action = UNNotificationAction(identifier: actionIdentifier, title: "完成", options: UNNotificationActionOptions.foreground)
+        let action = UNNotificationAction(identifier: actionIdentifier, title: "完成", options: [.foreground])
 
         let categoryIdentifier = "finishCategory"
         let category = UNNotificationCategory(identifier: categoryIdentifier, actions: [action], intentIdentifiers: [], options: [])
@@ -129,12 +135,11 @@ extension TimerViewController: UNUserNotificationCenterDelegate {
         content.title = "计时结束"
         content.subtitle = "休息一下吧"
         content.body = "您已成功完成一个番茄钟!"
-        // TODO: handle badge
-        //        content.badge = 1
+        content.badge = 1
         content.sound = UNNotificationSound.default()
         content.categoryIdentifier = categoryIdentifier
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.4, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         let request = UNNotificationRequest(identifier: "timerDone", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
@@ -144,10 +149,10 @@ extension TimerViewController: UNUserNotificationCenterDelegate {
                                 didReceive response: UNNotificationResponse, withCompletionHandler
         completionHandler: @escaping () -> Void) {
         
-        // do something with the notification
-        print(response.notification.request.content.userInfo)
+       UIApplication.shared.applicationIconBadgeNumber = 0
+        
         if response.actionIdentifier == "done" {
-            print("Done!")
+            print("Done")
         }
         
         // the docs say you should execute this asap
