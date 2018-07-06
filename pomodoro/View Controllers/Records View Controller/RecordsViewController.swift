@@ -62,19 +62,18 @@ class RecordsViewController: UIViewController {
     // MARK: -
     func setupPieChart() {
         let formatter = DateFormatter()
-        formatter.timeZone = NSTimeZone.local
-        formatter.setLocalizedDateFormatFromTemplate("ddMMyyyy")
+        formatter.timeStyle = .none
+        formatter.dateStyle = .medium
+        formatter.locale = Locale(identifier: "zh_CN")
         let dateInfo = formatter.string(from: Date())
         
         pieChartView.chartDescription?.text = ""
         pieChartView.noDataText = "暂无数据"
         pieChartView.noDataFont = UIFont.systemFont(ofSize: 17)
         pieChartView.noDataTextColor = UIColor(red: 152/255, green: 166/255, blue: 195/255, alpha: 1)
-        
+        pieChartView.legend.enabled = false
         pieChartView.centerText = dateInfo
         
-        // Set legend text
-        pieChartView.legend.font = UIFont.systemFont(ofSize: 15)
     }
     
     // MARK: - Setup Data
