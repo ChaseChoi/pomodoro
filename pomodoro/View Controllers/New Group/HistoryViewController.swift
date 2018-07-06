@@ -177,6 +177,14 @@ extension HistoryViewController: UITableViewDataSource {
         
         cell.noteLabel.text = record.note?.contents
         cell.timerLengthLabel.text = String(format: "%.f", record.timerLength)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .none
+        dateFormatter.timeStyle = .short
+        dateFormatter.locale = Locale(identifier: "zh_CN")
+        
+        let updateTime = dateFormatter.string(from: record.addedDate!)
+        cell.upateTimeLabel.text = updateTime
     }
 }
 

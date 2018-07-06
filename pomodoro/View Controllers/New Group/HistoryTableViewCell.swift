@@ -15,7 +15,7 @@ class HistoryTableViewCell: UITableViewCell {
     // MARK: - Properties
     @IBOutlet weak var timerLengthLabel: UILabel!
     @IBOutlet weak var noteLabel: UILabel!
-    
+    @IBOutlet weak var upateTimeLabel: UILabel!
     // MARK: - Initialization
     override func awakeFromNib() {
         super.awakeFromNib()
