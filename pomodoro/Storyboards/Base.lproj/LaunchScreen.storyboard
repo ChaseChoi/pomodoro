@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XiB-To-o8n">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="-24" width="375" height="725"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tick" translatesAutoresizingMaskIntoConstraints="NO" id="Bp9-yq-d92">
                                         <rect key="frame" x="94.5" y="261" width="186" height="145"/>
@@ -39,7 +39,7 @@
                                 <constraints>
                                     <constraint firstItem="CUV-o6-8QB" firstAttribute="centerX" secondItem="Bp9-yq-d92" secondAttribute="centerX" id="GeQ-df-jN8"/>
                                     <constraint firstItem="CUV-o6-8QB" firstAttribute="top" secondItem="Bp9-yq-d92" secondAttribute="bottom" constant="25" id="hiQ-gs-ira"/>
-                                    <constraint firstItem="Bp9-yq-d92" firstAttribute="centerY" secondItem="XiB-To-o8n" secondAttribute="centerY" id="hy4-Lf-vmw"/>
+                                    <constraint firstItem="Bp9-yq-d92" firstAttribute="centerY" secondItem="XiB-To-o8n" secondAttribute="centerY" constant="-28.833333333333314" id="hy4-Lf-vmw"/>
                                     <constraint firstItem="Bp9-yq-d92" firstAttribute="centerX" secondItem="XiB-To-o8n" secondAttribute="centerX" id="ot3-XT-hlg"/>
                                 </constraints>
                             </view>
@@ -47,8 +47,8 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="XiB-To-o8n" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="SZC-oD-wJp"/>
-                            <constraint firstItem="XiB-To-o8n" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-20" id="cO8-Gn-ktn"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="XiB-To-o8n" secondAttribute="bottom" id="kfB-0C-2Ua"/>
+                            <constraint firstItem="XiB-To-o8n" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-44" id="cO8-Gn-ktn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="XiB-To-o8n" secondAttribute="bottom" constant="-34" id="kfB-0C-2Ua"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XiB-To-o8n" secondAttribute="trailing" id="wxH-xQ-dCT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -56,7 +56,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+            <point key="canvasLocation" x="52" y="374.6305418719212"/>
         </scene>
     </scenes>
     <resources>
