@@ -11,12 +11,13 @@ import CoreData
 
 class AddNoteTableViewController: UITableViewController {
     // MARK: - Properties
-
+    var managedObjectContext: NSManagedObjectContext?
+    
+    // MARK: - IBOutlets
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var doneButton: UIBarButtonItem!
     
-    var managedObjectContext: NSManagedObjectContext?
-    
+    // MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = "新建事项"
@@ -31,6 +32,7 @@ class AddNoteTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
     
+    // MARK: - IBAction
     @IBAction func done() {
         guard let managedObjectContext = managedObjectContext else {
             return
@@ -58,6 +60,7 @@ class AddNoteTableViewController: UITableViewController {
 
 }
 
+// MARK: - UITextFieldDelegate
 extension AddNoteTableViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let oldText = textField.text! as NSString

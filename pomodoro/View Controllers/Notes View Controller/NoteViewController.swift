@@ -16,8 +16,7 @@ class NoteViewController: UIViewController {
         case ShowRecords
     }
     
-    // MARK: - Properties
-    
+    // MARK: - IBOutlets
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addRecordView: UIView!
@@ -26,8 +25,9 @@ class NoteViewController: UIViewController {
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var timeToRecordLabel: UILabel!
-    var effect: UIVisualEffect!
     
+    // MARK: - Properties
+    var effect: UIVisualEffect!
     private var noteToAddRecord: Note?
     private let estimatedRowHeight = CGFloat(60.0)
     private let stepOfSlider: Float = 5.0
@@ -212,7 +212,7 @@ class NoteViewController: UIViewController {
     
 }
 
-// MARK: -
+// MARK: - NSFetchedResultsControllerDelegate
 extension NoteViewController: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
@@ -249,6 +249,7 @@ extension NoteViewController: NSFetchedResultsControllerDelegate {
     }
 }
 
+// MARK: - UITableViewDataSource
 extension NoteViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         guard let sections = fetchedResultsController.sections else {
@@ -293,6 +294,7 @@ extension NoteViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - UITableViewDelegate
 extension NoteViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

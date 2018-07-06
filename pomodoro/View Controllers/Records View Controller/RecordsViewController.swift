@@ -16,18 +16,19 @@ class RecordsViewController: UIViewController {
         case showHistory
     }
     
-    // MARK: - Properties
+    // MARK: - IBOutlets
     @IBOutlet weak var pieChartView: PieChartView!
     @IBOutlet weak var doneBtn: UIBarButtonItem!
     @IBOutlet weak var historyBtn: UIBarButtonItem!
     @IBOutlet weak var todayTotalLabel: UILabel!
     
-    // MARK: Managed Object Context
-    var managedObjectContext: NSManagedObjectContext?
+    // MARK: - Properties
     var notes: [Note]?
     var notesDataEntries = [PieChartDataEntry]()
+    // MARK: Managed Object Context
+    var managedObjectContext: NSManagedObjectContext?
     
-    // MARK: - View
+    // MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -76,7 +77,7 @@ class RecordsViewController: UIViewController {
         
     }
     
-    // MARK: - Setup Data
+    // MARK: - Setup Notes Data
     func getTodayNotes() {
         let request = NSFetchRequest<Note>()
         request.entity = Note.entity()
@@ -137,7 +138,7 @@ class RecordsViewController: UIViewController {
         pieChartView.animate(xAxisDuration: 1, yAxisDuration: 1, easingOption: .easeOutQuad)
     }
 
-    // MARK: -
+    // MARK: - IBActions
     @IBAction func done() {
         dismiss(animated: true, completion: nil)
     }

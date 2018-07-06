@@ -12,7 +12,7 @@ class HistoryTableViewCell: UITableViewCell {
     // MARK: - Static Properties
     static let reuseIdentifier = "HistoryTableViewCell"
     
-    // MARK: - Properties
+    // MARK: - IBOutlets
     @IBOutlet weak var timerLengthLabel: UILabel!
     @IBOutlet weak var noteLabel: UILabel!
     @IBOutlet weak var upateTimeLabel: UILabel!

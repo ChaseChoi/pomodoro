@@ -11,18 +11,19 @@ import UserNotifications
 
 class TimerViewController: UIViewController {
     
-    // MARK: - Properties
+    // MARK: - IBOutlets
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     
+    // MARK: - Properties
     var timer = Timer()
     var timerIsOn = false
     var resumeTapped = false
     var totalTime = 1500.0
     var secondsRemaining = 1500.0
     
-    // MARK: -
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,7 +45,7 @@ class TimerViewController: UIViewController {
         timeLabel.text = timeString(time: secondsRemaining)
     }
     
-    // MARK: - Button Actions
+    // MARK: - IBActions
     @IBAction func startBtnTapped() {
         if !timerIsOn {
             runTimer()
@@ -86,7 +87,7 @@ class TimerViewController: UIViewController {
         return String(format: "%02i:%02i", minutes, seconds)
     }
     
-    // MARK: Congiure Timer
+    // MARK: Configure Timer
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         
@@ -121,6 +122,7 @@ class TimerViewController: UIViewController {
     }
 }
 
+// MARK: - UNUserNotificationCenterDelegate
 extension TimerViewController: UNUserNotificationCenterDelegate {
     
     func showNotification() {

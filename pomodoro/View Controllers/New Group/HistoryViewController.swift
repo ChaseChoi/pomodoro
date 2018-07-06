@@ -10,11 +10,12 @@ import UIKit
 import CoreData
 
 class HistoryViewController: UIViewController {
-    // MARK: - Properties
-    var managedObjectContext: NSManagedObjectContext?
+    // MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageLabel: UILabel!
     
+    // MARK: - Properties
+    var managedObjectContext: NSManagedObjectContext?
     private let estimatedRowHeight = CGFloat(60.0)
     
     var hasRecords: Bool {
@@ -83,6 +84,7 @@ class HistoryViewController: UIViewController {
     }
 }
 
+// MARK: - NSFetchedResultsControllerDelegate
 extension HistoryViewController: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
@@ -121,6 +123,7 @@ extension HistoryViewController: NSFetchedResultsControllerDelegate {
     }
 }
 
+// MARK: - UITableViewDataSource
 extension HistoryViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         guard let sections = fetchedResultsController.sections else {
@@ -188,6 +191,7 @@ extension HistoryViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - UITableViewDelegate
 extension HistoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
