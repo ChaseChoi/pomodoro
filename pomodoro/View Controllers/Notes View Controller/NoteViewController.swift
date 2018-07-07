@@ -29,7 +29,7 @@ class NoteViewController: UIViewController {
     // MARK: - Properties
     var effect: UIVisualEffect!
     private var noteToAddRecord: Note?
-    private let estimatedRowHeight = CGFloat(60.0)
+    private let estimatedRowHeight = CGFloat(44.0)
     private let stepOfSlider: Float = 5.0
     
     private var hasNotes: Bool {
