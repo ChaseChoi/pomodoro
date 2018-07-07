@@ -74,10 +74,9 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="pfC-Rz-F9p" secondAttribute="bottom" constant="11" id="Pe8-fs-9Lj"/>
+                                                <constraint firstItem="pfC-Rz-F9p" firstAttribute="centerY" secondItem="4sE-Z3-g3q" secondAttribute="centerY" id="7tY-eV-XIy"/>
                                                 <constraint firstItem="pfC-Rz-F9p" firstAttribute="leading" secondItem="4sE-Z3-g3q" secondAttribute="leading" constant="17" id="aMp-N4-EGW"/>
                                                 <constraint firstAttribute="trailing" secondItem="pfC-Rz-F9p" secondAttribute="trailing" constant="17" id="jbT-JU-7hT"/>
-                                                <constraint firstItem="pfC-Rz-F9p" firstAttribute="top" secondItem="4sE-Z3-g3q" secondAttribute="top" constant="11" id="zWt-bW-4ya"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -417,7 +416,6 @@
                                             <constraints>
                                                 <constraint firstItem="Ida-pz-Fjc" firstAttribute="leading" secondItem="gF9-yF-1vB" secondAttribute="leading" id="GSB-7z-RTA"/>
                                                 <constraint firstAttribute="trailing" secondItem="gF9-yF-1vB" secondAttribute="trailing" constant="17" id="HaV-1O-FJf"/>
-                                                <constraint firstAttribute="bottom" secondItem="gF9-yF-1vB" secondAttribute="bottom" constant="11" id="a6J-uI-JGu"/>
                                                 <constraint firstItem="gF9-yF-1vB" firstAttribute="top" secondItem="Cjg-Xg-TA3" secondAttribute="top" constant="12" id="mE5-Ee-Uuu"/>
                                                 <constraint firstItem="gF9-yF-1vB" firstAttribute="leading" secondItem="Cjg-Xg-TA3" secondAttribute="leading" constant="17" id="t1e-1m-bZF"/>
                                                 <constraint firstItem="Ida-pz-Fjc" firstAttribute="top" secondItem="gF9-yF-1vB" secondAttribute="bottom" constant="-1.5" id="t5h-wn-eHX"/>

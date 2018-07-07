@@ -29,7 +29,7 @@ class NoteViewController: UIViewController {
     // MARK: - Properties
     var effect: UIVisualEffect!
     private var noteToAddRecord: Note?
-    private let estimatedRowHeight = CGFloat(44.0)
+    private let rowHeight = CGFloat(44.0)
     private let stepOfSlider: Float = 5.0
     
     private var hasNotes: Bool {
@@ -114,8 +114,7 @@ class NoteViewController: UIViewController {
     
     private func setupTableView() {
         tableView.isHidden = true
-        tableView.estimatedRowHeight = estimatedRowHeight
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = rowHeight
     }
     
     /// Display messageLabel or tableView as per hasNotes

@@ -16,7 +16,7 @@ class HistoryViewController: UIViewController {
     
     // MARK: - Properties
     var managedObjectContext: NSManagedObjectContext?
-    private let estimatedRowHeight = CGFloat(44.0)
+    private let rowHeight = CGFloat(44.0)
     
     var hasRecords: Bool {
         guard let fetchObjects = fetchedResultsController.fetchedObjects else {
@@ -87,7 +87,7 @@ class HistoryViewController: UIViewController {
     
     private func setupTableView() {
         tableView.isHidden = true
-        tableView.estimatedRowHeight = estimatedRowHeight
+        tableView.rowHeight = rowHeight
     }
     
     func updateView() {
