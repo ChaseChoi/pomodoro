@@ -24,7 +24,7 @@ class HistoryViewController: UIViewController {
         }
         return fetchObjects.count > 0
     }
-    // MARK: -
+    // MARK: - CoreData
     private lazy var fetchedResultsController: NSFetchedResultsController<Record> = {
         // Create Fetch Request
         let fetchRequest: NSFetchRequest<Record> = Record.fetchRequest()
@@ -50,12 +50,25 @@ class HistoryViewController: UIViewController {
         }
     }
     
+    func saveChanges() {
+        guard (managedObjectContext?.hasChanges) != nil else {
+            return
+        }
+        do {
+            try managedObjectContext?.save()
+        } catch {
+            print("Unable to Save Managed Object Context")
+            print("\(error), \(error.localizedDescription)")
+        }
+    }
+    
     // MARK: - View Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "历史记录"
         
+        saveChanges()
         setupView()
         fetchRecords()
         updateView()
