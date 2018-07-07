@@ -25,32 +25,6 @@
                                 <color key="textColor" red="0.59607843140000005" green="0.65098039220000004" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zhJ-7t-Z9v">
-                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ZsY-Gb-v3n">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1xQ-2B-hPl">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
-                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HDz-Z2-fhT">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            </view>
-                                            <vibrancyEffect>
-                                                <blurEffect style="light"/>
-                                            </vibrancyEffect>
-                                        </visualEffectView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="1xQ-2B-hPl" secondAttribute="trailing" id="KYn-Gz-Ly7"/>
-                                        <constraint firstItem="1xQ-2B-hPl" firstAttribute="top" secondItem="ZsY-Gb-v3n" secondAttribute="top" id="L7i-rO-11b"/>
-                                        <constraint firstItem="1xQ-2B-hPl" firstAttribute="leading" secondItem="ZsY-Gb-v3n" secondAttribute="leading" id="PbG-CY-kOv"/>
-                                        <constraint firstAttribute="bottom" secondItem="1xQ-2B-hPl" secondAttribute="bottom" id="lqw-0c-DUb"/>
-                                    </constraints>
-                                </view>
-                                <blurEffect style="dark"/>
-                            </visualEffectView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hUv-EX-Hps">
                                 <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -117,6 +91,32 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="DyJ-EZ-m52"/>
                                 </connections>
                             </tableView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zhJ-7t-Z9v">
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ZsY-Gb-v3n">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1xQ-2B-hPl">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HDz-Z2-fhT">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </view>
+                                            <vibrancyEffect>
+                                                <blurEffect style="light"/>
+                                            </vibrancyEffect>
+                                        </visualEffectView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="1xQ-2B-hPl" secondAttribute="trailing" id="KYn-Gz-Ly7"/>
+                                        <constraint firstItem="1xQ-2B-hPl" firstAttribute="top" secondItem="ZsY-Gb-v3n" secondAttribute="top" id="L7i-rO-11b"/>
+                                        <constraint firstItem="1xQ-2B-hPl" firstAttribute="leading" secondItem="ZsY-Gb-v3n" secondAttribute="leading" id="PbG-CY-kOv"/>
+                                        <constraint firstAttribute="bottom" secondItem="1xQ-2B-hPl" secondAttribute="bottom" id="lqw-0c-DUb"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
