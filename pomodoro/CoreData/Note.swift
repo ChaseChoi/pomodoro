@@ -11,7 +11,7 @@ import Foundation
 extension Note {
     @objc var dateForSection: String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
+        dateFormatter.dateStyle = .full
         dateFormatter.timeStyle = .none
         dateFormatter.locale = Locale(identifier: "zh_CN")
         let date = dateFormatter.string(from: self.createdAt!)
