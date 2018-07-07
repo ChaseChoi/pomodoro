@@ -82,15 +82,15 @@ class RecordsViewController: UIViewController {
         let request = NSFetchRequest<Note>()
         request.entity = Note.entity()
         
+        let today = Date()
         var calendar = Calendar.current
         calendar.timeZone = NSTimeZone.local
-        let date = Date()
-        
-        let dateFrom = calendar.startOfDay(for: Date())
+        let dateFrom = calendar.startOfDay(for: today)
         let dateTo = calendar.date(byAdding: .day, value: 1, to: dateFrom)
         
-        let fromPredicate = NSPredicate(format: "%@ >= %@", date as NSDate, dateFrom as NSDate)
-        let toPredicate = NSPredicate(format: "%@ < %@", date as NSDate, dateTo! as NSDate)
+        // Combining Predicates
+        let fromPredicate = NSPredicate(format: "%K >= %@", #keyPath(Note.createdAt), dateFrom as NSDate)
+        let toPredicate = NSPredicate(format: "%K < %@", #keyPath(Note.createdAt), dateTo! as NSDate)
         let datePredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [fromPredicate, toPredicate])
         request.predicate = datePredicate
         
