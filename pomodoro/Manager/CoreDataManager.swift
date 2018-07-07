@@ -13,39 +13,25 @@ class CoreDataManager {
     private let modelName: String
     
     private(set) lazy var managedObjectContext: NSManagedObjectContext = {
-        let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-        managedObjectContext.persistentStoreCoordinator = self.persistentStoreCoordinator
-        return managedObjectContext
-    }()
-    private lazy var managedObjectModel: NSManagedObjectModel = {
-        guard let modelURL = Bundle.main.url(forResource: modelName, withExtension: "momd") else {
-            fatalError("Unable to find data model")
-        }
-        guard let managedObjectModel = NSManagedObjectModel(contentsOf: modelURL) else {
-            fatalError("Unable to load data model")
-        }
-        return managedObjectModel
+        return self.storeContainer.viewContext
     }()
     
-    private lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
-        let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        
-        // Helpers
-        let fileManager = FileManager.default
-        let storeName = "\(self.modelName).sqlite"
-        
-        let documentsDirectoryURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        
-        // URL persistent store
-        let persistentStoreURL = documentsDirectoryURL.appendingPathComponent(storeName)
-        
-        do {
-            try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: persistentStoreURL, options: nil)
-        } catch {
-            fatalError("Unable to add persitent store")
+    // MARK: - NSPersistentContainer
+    private lazy var storeContainer: NSPersistentContainer = {
+       let container = NSPersistentContainer(name: self.modelName)
+        container.loadPersistentStores { (storeDescription, error) in
+            if let error = error as NSError? {
+                print("Unresolved error \(error), \(error.userInfo)")
+            }
         }
-        return persistentStoreCoordinator
+        return container
     }()
+    
+    // MARK: - Initialization
+    init(modelName: String) {
+        self.modelName = modelName
+        setupNotificationHandling()
+    }
     
     // MARK: -
     private func setupNotificationHandling() {
@@ -71,9 +57,4 @@ class CoreDataManager {
         
     }
     
-    // MARK: - Initialization
-    init(modelName: String) {
-        self.modelName = modelName
-        setupNotificationHandling()
-    }
 }
