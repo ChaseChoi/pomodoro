@@ -28,6 +28,9 @@ class RecordsViewController: UIViewController {
     // MARK: Managed Object Context
     var managedObjectContext: NSManagedObjectContext?
     
+    var hasNotes: Bool {
+        return !notesDataEntries.isEmpty
+    }
     // MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -114,7 +117,12 @@ class RecordsViewController: UIViewController {
                 }
             }
         }
-        updateChartData()
+
+        if hasNotes {
+            updateChartData()
+        } else {
+            pieChartView.data = nil
+        }
     }
     
     func updateChartData() {
